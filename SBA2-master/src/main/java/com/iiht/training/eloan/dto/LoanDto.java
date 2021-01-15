@@ -1,9 +1,20 @@
 package com.iiht.training.eloan.dto;
 
-public class LoanDto {
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
+public class LoanDto {
+	@NotNull(message="loanName is mandatory")
+	@NotBlank(message="loanName can not be null")
+	@Size(min=3,max=100,message="loanName must be 4 to 50 chars in length")
 	private String loanName;
+	
+	@NotNull(message="loanAmount is mandate")
+	@Min(value=1, message = "loanAmount should be greater than 1")
 	private Double loanAmount;
+	
 	private String loanApplicationDate;
 	private String businessStructure;
 	private String billingIndicator;
